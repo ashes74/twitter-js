@@ -25,3 +25,5 @@ app.get('/news', function (req, res) {
 app.listen(3000, function () {
   console.log('Twitter app listening on port 3000!');
 });
+
+console.log("hello");
