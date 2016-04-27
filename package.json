@@ -1,0 +1,16 @@
+{
+  "name": "twitter-js",
+  "version": "1.0.0",
+  "description": "a cool tweet app!",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lori Ash and Jen Cen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  }
+}
