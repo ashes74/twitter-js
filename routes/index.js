@@ -14,14 +14,14 @@ module.exports = function(io){
     var name = req.params.name;
     var list = tweetBank.find( {name: name} );
     // console.log(list);
-    res.render( 'index', { title: 'Twitter.js - Posts by '+name,name:name, tweets: list, showForm: true} );
+    res.render( 'index', { title: 'Twitter.js - Posts by '+name, name:name, tweets: list, showForm: true} );
   });
 
   router.get('/tweets/:id', function (req, res) {
 
-    var id = req.params.id;
-    var list = tweetBank.find({id:id});
-    res.render('index', {title: 'Twitter-js : Post', tweets: list});
+    var id = Number(req.params.id);
+    var listTweetsById = tweetBank.find({id:id});
+    res.render('index', {title: 'Twitter-js : Post', tweets: listTweetsById});
 
   })
 

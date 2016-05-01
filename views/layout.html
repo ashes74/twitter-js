@@ -81,22 +81,22 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
     <script src="/socket.io/socket.io.js"></script>
-<script>
-  // Load the socket.io library above, then connect to the server.
-  // Because the socket.io server is being run on the same server as your
-  // Express instance, you can connect() without any arguments.
-  var socket = io.connect();
-  socket.on('connect', function(){
-    console.log('connected to server via WebSockets!');
-  });
-  // When 'new_tweet' events are fired, do something with the packaged tweet
-  socket.on('new_tweet', function (tweet) {
-    // alert('Refreshing... check the console...');
-    // some logic to add the new tweet to the DOM…
-    console.log(this);
-    document.getElementsByClassName('new_tweet')[0].innerHTML =tweet;
-    console.log("This is a tweet",tweet);
-  });
-</script>
+    <script>
+      // Load the socket.io library above, then connect to the server.
+      // Because the socket.io server is being run on the same server as your
+      // Express instance, you can connect() without any arguments.
+      var socket = io.connect();
+      socket.on('connect', function(){
+        console.log('connected to server via WebSockets!');
+      });
+      // When 'new_tweet' events are fired, do something with the packaged tweet
+      socket.on('new_tweet', function (tweet) {
+        // alert('Refreshing... check the console...');
+        // some logic to add the new tweet to the DOM…
+        console.log(this);
+        document.getElementsByClassName('new_tweet')[0].innerHTML =tweet;
+        console.log("This is a tweet",tweet);
+      });
+    </script>
   </body>
 </html>
