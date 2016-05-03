@@ -5,16 +5,20 @@ var swig = require('swig');
 var routes = require('./routes');
 var bodyParser = require('body-parser');
 var socketio = require('socket.io');
-
+var pg = require('pg');
+var conString = 'postgres://localhost:5432/twitterdb';
+var client = new pg.Client(conString);
 
 app.use(morgan(':method :url :status'));
 app.engine('html', swig.renderFile);
 app.set('views',__dirname + '/views/' );
 app.set('view engine', 'html');
 
+// connect to postgres
+client.connect();
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false })); //for HTML form submits b/c HTML forms use URL-link encoding
 
 //Remove lines when deploying
 app.set('view cache', false);
@@ -26,7 +30,7 @@ var server = app.listen(3000, function(){
 var io = socketio.listen(server);
 // console.log(io);
 
-app.use('/', routes(io));
+app.use('/', routes(io, client));
 app.use(express.static('public'));
 //
 //

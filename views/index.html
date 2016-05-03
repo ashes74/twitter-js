@@ -16,12 +16,16 @@
       <!-- create new tweets -->
       {% if showForm %}
       <form action="/tweets" method="POST">
+      <!-- <label for="name_field">Name:</label> -->
       <label for="name_field">Name:</label>
       <!-- -->
-      <input name="name" type="text" value = "{{name}}" id="name_field" />
+   <!--    <input name="name" type="text" value = "{{name}}" id="name_field" /> -->
+      <input name="name" type="text" value = "{{name}}" id="name" />
 
-      <label for="text_field">Text:</label>
-      <input name="text" type="text" id="text_field" style="width: 350px;" />
+   <!--    <label for="text_field">Text:</label> -->
+      <label for="text">Text:</label>
+       <input name="text" type="text" id="text" style="width: 350px;" />
+  <!--     <input name="text" type="text" id="text_field" style="width: 350px;" /> -->
 
       <input type="submit" value="Submit" />
       </form>
@@ -30,11 +34,19 @@
 
       {% for tweet in tweets %}
         <div class="new_tweet">
+        <div style="float:left; padding: 10px" >
+          <img width="100px" src="{{tweet.pictureurl}}"/> 
+        </div>
+        <div style="float:left">
         <li><a href="/users/{{tweet.name}}"><h4>{{tweet.name}}</h4></a>
-          <a href="/tweets/{{tweet.id}}">{{tweet.text}}</a> <br>
-            
+          <a href="/tweets/{{tweet.id}}">{{tweet.content}}</a> <br>
+           
           <a href="">Re-tweet</a>
         </li>
+        </div>
+        <div style="clear:both">
+        </div>
+
         </div>
       {% endfor %}
 
